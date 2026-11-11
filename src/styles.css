@@ -1,0 +1,250 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Luxury consulting design system.
+ * Ink / charcoal / platinum / gold on soft off-white.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+
+  --font-display: "Plus Jakarta Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-ink: var(--ink);
+  --color-ink-foreground: var(--ink-foreground);
+  --color-charcoal: var(--charcoal);
+  --color-platinum: var(--platinum);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-hairline: var(--hairline);
+}
+
+/* Logo marquee for Brands section */
+.marquee {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  animation: marquee 18s linear infinite;
+}
+.marquee img {
+  flex: 0 0 auto;
+  max-height: 3rem;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+
+:root {
+  --radius: 0.25rem;
+
+  --ink: #101a2e;
+  --ink-foreground: #f7f5f0;
+  --charcoal: #16203a;
+  --platinum: #d4cfc4;
+  --gold: #d4a03a;
+  --gold-soft: #e8c07a;
+  --hairline: color-mix(in oklab, #101a2e 14%, transparent);
+
+  --background: #f7f5f0;
+  --foreground: #101a2e;
+  --card: #ffffff;
+  --card-foreground: #101a2e;
+  --popover: #ffffff;
+  --popover-foreground: #101a2e;
+  --primary: #101a2e;
+  --primary-foreground: #f7f5f0;
+  --secondary: #ece8e0;
+  --secondary-foreground: #101a2e;
+  --muted: #ece8e0;
+  --muted-foreground: #5a5348;
+  --accent: #d4a03a;
+  --accent-foreground: #101a2e;
+  --destructive: #a33a2b;
+  --destructive-foreground: #f7f5f0;
+  --border: color-mix(in oklab, #101a2e 14%, transparent);
+  --input: color-mix(in oklab, #101a2e 20%, transparent);
+  --ring: #d4a03a;
+
+  --shadow-elegant: 0 24px 60px -24px color-mix(in oklab, #101a2e 26%, transparent);
+  --shadow-lift: 0 2px 8px -2px color-mix(in oklab, #101a2e 12%, transparent);
+}
+
+.dark {
+  --background: #101a2e;
+  --foreground: #f7f5f0;
+  --card: #16203a;
+  --card-foreground: #f7f5f0;
+  --popover: #16203a;
+  --popover-foreground: #f7f5f0;
+  --primary: #f7f5f0;
+  --primary-foreground: #101a2e;
+  --secondary: #1c2745;
+  --secondary-foreground: #f7f5f0;
+  --muted: #1c2745;
+  --muted-foreground: #cfc9bc;
+  --accent: #d4a03a;
+  --accent-foreground: #101a2e;
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 18%);
+  --hairline: oklch(1 0 0 / 14%);
+
+  --shadow-elegant: 0 24px 60px -24px oklch(0 0 0 / 60%);
+  --shadow-lift: 0 2px 10px -2px oklch(0 0 0 / 45%);
+}
+
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-body);
+    font-feature-settings: "ss01", "cv01";
+    overflow-x: clip;
+  }
+
+  img,
+  video,
+  svg {
+    max-width: 100%;
+    height: auto;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-sans) !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.02em;
+    overflow-wrap: anywhere;
+  }
+
+  h1.hero-title {
+    font-weight: 500 !important;
+  }
+}
+
+/* Frosted panel used for premium cards and nav */
+@utility glass {
+  background: color-mix(in oklab, var(--card) 72%, transparent);
+  backdrop-filter: blur(18px) saturate(130%);
+  border: 1px solid var(--hairline);
+}
+
+@utility glass-dark {
+  background: color-mix(in oklab, #101a2e 72%, transparent);
+  backdrop-filter: blur(18px) saturate(130%);
+  border: 1px solid oklch(1 0 0 / 12%);
+}
+
+/* Small uppercase eyebrow label */
+@utility kicker {
+  font-family: var(--font-sans);
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  @media (min-width: 640px) {
+    font-size: 0.6875rem;
+    letter-spacing: 0.24em;
+  }
+}
+
+@utility lift {
+  transition:
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.5s ease;
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-elegant);
+    border-color: color-mix(in oklab, var(--gold) 55%, transparent);
+  }
+}
+
+@utility prose-body {
+  font-size: 0.975rem;
+  line-height: 1.8;
+  color: var(--muted-foreground);
+  overflow-wrap: anywhere;
+  @media (min-width: 640px) {
+    font-size: 1.0625rem;
+    line-height: 1.85;
+  }
+  & strong {
+    color: var(--foreground);
+    font-weight: 600;
+  }
+}
+
+/* Soft warm cream body copy on dark/ink surfaces */
+:is(.bg-ink, .text-ink-foreground) .prose-body {
+  color: color-mix(in oklab, var(--ink-foreground) 78%, transparent);
+}
+
+:is(.bg-ink, .text-ink-foreground) .prose-body strong {
+  color: var(--ink-foreground);
+}
+
+/* Hide Lovable publish watermark / “Edit with Lovable” badge */
+#lovable-badge,
+#lovable-badge-cta,
+#lovable-badge-text,
+#lovable-badge-divider,
+#lovable-badge-close,
+aside#lovable-badge {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  opacity: 0 !important;
+}
